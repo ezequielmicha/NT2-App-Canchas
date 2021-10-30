@@ -9,7 +9,7 @@ export default () => {
             <StatusBar style={'auto'} />
 
             <View>
-                <Text> LAS CANCHAS DE UN ANIMAL </Text>
+                <Text> CALIFICACIONES </Text>
             </View>
 
         </View>     
