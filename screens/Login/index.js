@@ -9,7 +9,7 @@ export default () => {
             <StatusBar style={'auto'} />
 
             <View>
-                <Text> AQUI IRA EL LOGIN </Text>
+                <Text> LOGIN </Text>
             </View>
 
         </View>     
