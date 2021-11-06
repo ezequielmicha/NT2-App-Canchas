@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Button, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 export default () => {
     return (
@@ -7,7 +7,17 @@ export default () => {
             <StatusBar style={'auto'} />
 
             <View>
-                <Text> SELECT SHIFT </Text>
+                <Text style={styles.container}> SELECT SHIFT </Text>
+                <TouchableOpacity>
+                
+                    
+
+
+                    <View>
+
+                    </View>
+                </TouchableOpacity>
+
             </View>
 
         </View>     
