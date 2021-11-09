@@ -7,6 +7,7 @@ import Contact from '../../screens/Contact';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs"
 
 
+
 export default function MaterialTopTabNavigator() {
 
 
@@ -18,6 +19,7 @@ export default function MaterialTopTabNavigator() {
             <TopTabs.Screen name={'Califications'} component={Califications} options={{ title: 'Calificaciones', headerShown: false }}/>
             <TopTabs.Screen name={'Maps'} component={Maps}/>
             <TopTabs.Screen name={'Contact'} component={Contact}/>
+        
         </TopTabs.Navigator>
     );
   }
