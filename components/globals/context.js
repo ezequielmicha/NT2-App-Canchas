@@ -1,9 +1,13 @@
 import React from "react";
 
 const authData = {
-    email: "ferpallas@gmail.com"
+    name: "namePorDefecto",
+    email: "mailPorDefecto",
+    picture: "picturePorDefecto"
 }
 
-export { authData }
+const isAuthenticated = false;
+
+export { authData, isAuthenticated }
 
 export default React.createContext(authData)

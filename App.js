@@ -2,32 +2,26 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
-import MaterialTopTabNavigator from './components/topTabsNavigator';
-import GlobalContext, { authData } from "./components/globals/context";
+import MaterialTopTabNavigator from './components/TopTabsNavigator';
+import GlobalContext, { authData, isAuthenticated } from "./components/globals/context";
 import LoginNavigator from './components/stackNavigator';
-import { createStackNavigator, createLoginNavigator  } from "@react-navigation/stack";
 
 export default function App() {
-  //const Stack = LoginNavigator();
-  // const StackLogin = createLoginNavigator();
   const [AuthData, setAuthData] = useState({...authData});
-  // const [authenticated, setAuthenticated] = useState(true)
-  const isAuthenticated = () => AuthData.email === undefined;
+  const [IsAuthenticated, setIsAuthenticated] = useState(false);
+  console.log(IsAuthenticated);
 
   return (
- // <GlobalContext.Provider value={{ AuthData, setAuthData }} >
-    <NavigationContainer>
-    {
-          (isAuthenticated()) ?
-            <MaterialTopTabNavigator/>
-            :
-            <LoginNavigator/>
-            
-      }
-    
-      
-    </NavigationContainer>
- // </GlobalContext.Provider>
+    <GlobalContext.Provider value={{ AuthData, setAuthData, setIsAuthenticated }} >
+        <NavigationContainer>
+        {
+          (IsAuthenticated) ?
+           <MaterialTopTabNavigator/>
+           :
+           <LoginNavigator/>
+        }
+        </NavigationContainer>
+    </GlobalContext.Provider>
   );
 }
 
