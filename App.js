@@ -1,15 +1,27 @@
 //import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import MaterialTopTabNavigator from './components/TopTabsNavigator';
+import GlobalContext, { authData, isAuthenticated } from "./components/globals/context";
+import LoginNavigator from './components/stackNavigator';
 
 export default function App() {
+  const [AuthData, setAuthData] = useState({...authData});
+  const [IsAuthenticated, setIsAuthenticated] = useState(false);
+  console.log(IsAuthenticated);
 
   return (
-    <NavigationContainer>
-       <MaterialTopTabNavigator/>
-    </NavigationContainer>
+    <GlobalContext.Provider value={{ AuthData, setAuthData, setIsAuthenticated }} >
+        <NavigationContainer>
+        {
+          (IsAuthenticated) ?
+           <MaterialTopTabNavigator/>
+           :
+           <LoginNavigator/>
+        }
+        </NavigationContainer>
+    </GlobalContext.Provider>
   );
 }
 

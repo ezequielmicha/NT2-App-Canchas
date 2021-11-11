@@ -3,6 +3,7 @@
     "name": "AppCanchas",
     "slug": "AppCanchas",
     "version": "1.0.0",
+    "scheme": "app-canchas",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -17,9 +18,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.appcanchas.nt2"
     },
     "android": {
+      "package" : "com.appcanchas.nt2",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
