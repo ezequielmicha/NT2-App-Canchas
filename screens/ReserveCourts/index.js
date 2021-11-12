@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Button, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
+import moment from 'moment';
+import reserves from '../../utils/generateReserves';
 
 export default () => {
+
+    
+    
+    console.log(reserves);
 
     return (
 
@@ -10,6 +16,7 @@ export default () => {
 
             <View>
                 <Text> RESERVAR CANCHA </Text>
+                
             </View>
 
         </View>     
