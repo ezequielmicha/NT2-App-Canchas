@@ -15,6 +15,10 @@ export default () => {
                 <Text> LAS CANCHAS DE UN ANIMAL </Text>
                 <Text> ¡Bienvenid@ {AuthData.name}! </Text>
                 <Text> Tu mail registrado es: {AuthData.email} </Text>
+                {/* <Image
+                    source={AuthData.picture}
+                    style={styles.buttonImageIconStyle}
+                />  */}
                 {/* <Image source={AuthData.picture} 
                 // style={styles.buttonIconStyle}
                 /> */}

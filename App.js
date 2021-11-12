@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
-import MaterialTopTabNavigator from './components/TopTabsNavigator';
+import MaterialTopTabNavigator from './components/topTabsNavigator';
 import GlobalContext, { authData, isAuthenticated } from "./components/globals/context";
 import LoginNavigator from './components/stackNavigator';
 
