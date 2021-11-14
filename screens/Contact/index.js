@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Button, StatusBar, StyleSheet, Text, TextInput, View, ImageBackground } from 'react-native';
 import { Linking } from 'react-native';
 
@@ -22,8 +22,6 @@ export default () => {
         await Linking.openURL("sms:+5491144109209&body=Hola, queria hacer una consulta");
     };
 
-   
-
     return (
         <View style={styles.container}>
 
@@ -36,7 +34,6 @@ export default () => {
             
             <View style = {styles.button}>
                 
-
                 <Button 
                 color='yellow'
                 title="Llamar" 
