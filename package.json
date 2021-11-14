@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "3.5.2",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/material-top-tabs": "^6.0.6",
     "@react-navigation/native": "^6.0.6",
@@ -30,7 +31,8 @@
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "~3.8.0",
     "react-native-tab-view": "^3.1.1",
-    "react-native-web": "0.17.1"
+    "react-native-web": "0.17.1",
+    "react-native-wizard": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

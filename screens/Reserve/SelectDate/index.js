@@ -2,14 +2,12 @@ import React, { useState } from 'react';
 import { Button, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default () => {
-
     return (
-
         <View style={styles.container}>
             <StatusBar style={'auto'} />
 
             <View>
-                <Text> PAGOS </Text>
+                <Text> SELECT DATE and TIME </Text>
             </View>
 
         </View>     
