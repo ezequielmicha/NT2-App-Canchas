@@ -24,33 +24,33 @@ export default () => {
 
     return (
         <View style={styles.container}>
-
-<        ImageBackground source={image} resizeMode="cover" style={styles.image}>
+            
+            <ImageBackground source={require('../../assets/fondo.png')} style={styles.background}>
          
        
             <StatusBar style={'auto'} />
 
-            <Text style={styles.text}> CONTACTOS </Text>
+            <Text style={styles.title}> CONTACTOS </Text>
             
             <View style = {styles.button}>
                 
                 <Button 
-                color='yellow'
+                color='black'
                 title="Llamar" 
                 onPress={handleCallPress}
                 />
                 <Button 
-                color='yellow'
+                color='black'
                 title="WhatsApp" 
                 onPress={handleWhatsAppPress}
                 />
                 <Button 
-                color='yellow'
+                color='black'
                 title="Email" 
                 onPress={handleEmailPress}
                 />
                 <Button 
-                color='yellow'
+                color='black'
                 title="SMS" 
                 onPress={handleSMSPress}
                 />
@@ -66,22 +66,24 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
+        alignItems: 'center',
         justifyContent: 'center',
-        margin:10
         
     },
-    text: {
+    title: {
         color: 'black',
         flexDirection: 'column',
+        fontWeight: 'bold',
         fontSize: 30,
         marginBottom: 35,
         margin: 100
 
     },
 
-    image: {
+    background: {
         flex: 1,
-        justifyContent: "center"
+        justifyContent: "center",
+        width: 400
       },
 
     button: {
