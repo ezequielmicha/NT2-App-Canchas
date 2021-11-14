@@ -28,7 +28,7 @@ export default () => {
           console.log("Result: ", result)
           const { type, accessToken } = result;
           
-          setAuthData({...AuthData, name: result.user.name, email: result.user.email, picture: result.user.photoUrl})
+          setAuthData({...AuthData, name: result.user.name, email: result.user.email, photoUrl: result.user.photoUrl})
           //console.log(result.user.name);
           setIsAuthenticated(true);
       
@@ -55,9 +55,18 @@ export default () => {
 
       {/* Asi seria con un TouchableOpacity que permite agregar varios elementos para que sean "touchables" */}
       {/* En este ejemplo yo les puse una simple imagen para Google Sign In */}
+      <View>
+        <Image
+        source={require('../../assets/logo.png')}
+        style={{width: 110, height: 110,}}
+        />
+        <Text style={styles.titles}>¡Hola!</Text>
+        <Text style={{fontSize:20,textAlign: 'center'}}>No te quedes sin tu lugar</Text>
+        <Text style={{fontSize:20,textAlign: 'center'}}>Logueate para continuar</Text>
+      </View>
       <TouchableOpacity
         style={styles.buttonGPlusStyle}
-        activeOpacity={0.5}
+        activeOpacity={0.2}
         onPress={() => signInWithGoogleAsync()}
         >
         <Image
@@ -81,16 +90,18 @@ const styles = StyleSheet.create({
   buttonGPlusStyle: {
     flexDirection: 'row',
     alignItems: 'center',
-    borderWidth: 0.5,
+    borderWidth: 0.1,
     borderColor: '#fff',
-    borderRadius: 5,
-    margin: 50,
+    borderRadius: 0.1,
+    margin: 60,
   },
   buttonImageIconStyle: {
-    padding: 10,
-    margin: 5,
-    width: 300,
-    height: 200,
-    resizeMode: 'stretch',
+    width: 500,
+    height: 60,
+  },
+  titles: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 50,
   },
 });

@@ -3,7 +3,7 @@ import React from "react";
 const authData = {
     name: "namePorDefecto",
     email: "mailPorDefecto",
-    picture: "picturePorDefecto"
+    photoUrl: "photoPorDefecto"
 }
 
 const isAuthenticated = false;
