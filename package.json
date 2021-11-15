@@ -27,9 +27,11 @@
     "react-native-gesture-handler": "^1.10.3",
     "react-native-maps": "0.28.0",
     "react-native-pager-view": "5.4.6",
+    "react-native-radio-buttons-group": "^2.2.7",
     "react-native-reanimated": "^2.2.3",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "~3.8.0",
+    "react-native-simple-radio-button": "^2.7.4",
     "react-native-tab-view": "^3.1.1",
     "react-native-web": "0.17.1",
     "react-native-wizard": "^2.1.0"

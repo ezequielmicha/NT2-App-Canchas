@@ -6,8 +6,10 @@ const authData = {
     photoUrl: "photoPorDefecto"
 }
 
+const sizeSelected = '';
+
 const isAuthenticated = false;
 
-export { authData, isAuthenticated }
+export { authData, isAuthenticated, sizeSelected }
 
 export default React.createContext(authData)
