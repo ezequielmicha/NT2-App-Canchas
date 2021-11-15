@@ -58,7 +58,7 @@ export default () => {
       <View>
         <Image
         source={require('../../assets/logo.png')}
-        style={{width: 110, height: 110,}}
+        style={styles.logo}
         />
         <Text style={styles.titles}>¡Hola!</Text>
         <Text style={{fontSize:20,textAlign: 'center'}}>No te quedes sin tu lugar</Text>
@@ -103,5 +103,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: 50,
+  },
+  logo: {
+    flexDirection: 'row',
+    width: 110, 
+    height: 110,
+    alignItems: 'center', 
+    justifyContent: 'center',
+    margin: 60,
   },
 });
