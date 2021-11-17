@@ -5,7 +5,7 @@ import Maps from '../../screens/Maps';
 import Califications from '../../screens/Califications';
 import Contact from '../../screens/Contact';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import ReserveCourts from '../../screens/ReserveCourts';
+import Reserve from '../../screens/Reserve';
 
 
 
@@ -17,10 +17,10 @@ export default function MaterialTopTabNavigator() {
     return (
         <TopTabs.Navigator>
             <TopTabs.Screen name={'Inicio'} component={Home}/>
-            <TopTabs.Screen name={'Califications'} component={Califications} options={{ title: 'Calificaciones', headerShown: false }}/>
-            <TopTabs.Screen name={'Maps'} component={Maps}/>
-            <TopTabs.Screen name={'Contact'} component={Contact}/>
-            <TopTabs.Screen name={'ReserveCourts'} component={ReserveCourts}/>
+            <TopTabs.Screen name={'Reservas'} component={Reserve}/>
+            <TopTabs.Screen name={'Ubicacion'} component={Maps}/>
+            <TopTabs.Screen name={'Calificaciones'} component={Califications} options={{ title: 'Calificaciones', headerShown: false }}/>
+            <TopTabs.Screen name={'Cuenta'} component={Contact}/>
         </TopTabs.Navigator>
     );
   }

@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, navigation } from 'react';
 import { Button, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
 import moment from 'moment';
-import reserves from '../../utils/generateReserves';
+import SelectSize from './SelectSize';
+import { NavigationContainer } from '@react-navigation/native';
+import Wizard from '../../components/wizard';
+
 
 export default () => {
-
-    
-    
-    console.log(reserves);
 
     return (
 
@@ -16,6 +15,8 @@ export default () => {
 
             <View>
                 <Text> RESERVAR CANCHA </Text>
+
+                <Wizard/>
                 
             </View>
 
