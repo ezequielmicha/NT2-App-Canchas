@@ -6,11 +6,11 @@ import MaterialTopTabNavigator from './components/topTabsNavigator';
 import GlobalContext, { authData, isAuthenticated, dataReserve } from "./components/globals/context";
 import LoginNavigator from './components/stackNavigator';
 
+
 export default function App() {
   const [AuthData, setAuthData] = useState({...authData});
   const [IsAuthenticated, setIsAuthenticated] = useState(false);
   const [DataReserve, setDataReserve] = useState({...dataReserve});
-  
   console.log(DataReserve);
 
   return (

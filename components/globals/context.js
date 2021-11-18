@@ -1,16 +1,16 @@
 import React from "react";
 
 const authData = {
-    name: "namePorDefecto",
-    email: "mailPorDefecto",
-    photoUrl: "photoPorDefecto"
+    name: "",
+    email: "",
+    photoUrl: ""
 }
 
 const dataReserve = {
     courtSize: "",
     date: "",
     hour: "",
-    userEmail: authData.email
+    userEmail: ""
 }
 
 const isAuthenticated = false;

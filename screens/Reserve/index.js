@@ -1,4 +1,4 @@
-import React, { useState, navigation } from 'react';
+import React, { useState, useEffect, navigation } from 'react';
 import { Button, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
 import moment from 'moment';
 import SelectSize from './SelectSize';
@@ -10,6 +10,22 @@ import axios from 'axios';
 
 
 export default () => {
+    console.log(prueba);
+    
+    // const cargarReservas = async () => {
+        
+    //     await fetch("http://192.168.0.5:3000/api/reserves")
+    //         .then(res => res.json()) // tratamiento de data para convertirlo en un json
+    //         .then(data => {
+    //             console.log(data)
+    //             // setVehiculos(data)
+    //         })
+    // }
+
+    // cargarReservas();
+    
+    
+
     // async function getReserves(){
     //     const reserves = await axios.get('http://localhost:3000/api/reserves')
     //     .then(function (response) {
@@ -30,13 +46,13 @@ export default () => {
     // const reserves = getReserves().json();
     // console.log(reserves);
     return (
-
+       
         <View style={styles.container}>
             <StatusBar style={'auto'} />
 
             <View>
                     
-
+            
                 <Wizard/>
                 
             </View>

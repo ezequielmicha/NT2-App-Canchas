@@ -1,19 +1,20 @@
 import React, { useState, useContext } from 'react';
+import { Text, View, StyleSheet} from 'react-native';
 import RadioGroup from 'react-native-radio-buttons-group';
 import { RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import GlobalContext, { dataReserve, authData } from '../../../components/globals/context';
 
 const radioButtonsData = [{
     id: '1', // acts as primary key, should be unique and non-empty string
-    label: 'Futbol 5',
+    label: 'F5',
     value: 'option1'
 }, {
     id: '2',
-    label: 'Futbol 7',
+    label: 'F7',
     value: 'option2'
 }, {
     id: '3',
-    label: 'Futbol 9',
+    label: 'F9',
     value: 'option3'
 }]
 
@@ -31,10 +32,23 @@ export default () =>{
     }
 
     return (
-        <RadioGroup 
-            radioButtons={radioButtons} 
-            onPress={onPressRadioButton} 
-        />
+        <View>
+            <Text style={styles.text} > Seleccione el tamaño de la cancha de fútbol que desea reservar</Text>
+            <RadioGroup 
+                radioButtons={radioButtons} 
+                onPress={onPressRadioButton} 
+            />
+        </View>
     );
 
 }
+
+const styles = StyleSheet.create({
+    text: {
+      textAlign: "center",
+      backgroundColor: '#fff',
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginBottom: 50
+     }
+});
