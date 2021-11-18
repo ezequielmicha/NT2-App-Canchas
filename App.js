@@ -3,16 +3,18 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import MaterialTopTabNavigator from './components/topTabsNavigator';
-import GlobalContext, { authData, isAuthenticated } from "./components/globals/context";
+import GlobalContext, { authData, isAuthenticated, dataReserve } from "./components/globals/context";
 import LoginNavigator from './components/stackNavigator';
 
 export default function App() {
   const [AuthData, setAuthData] = useState({...authData});
   const [IsAuthenticated, setIsAuthenticated] = useState(false);
-  console.log(IsAuthenticated);
+  const [DataReserve, setDataReserve] = useState({...dataReserve});
+  
+  console.log(DataReserve);
 
   return (
-    <GlobalContext.Provider value={{ AuthData, setAuthData, setIsAuthenticated }} >
+    <GlobalContext.Provider value={{ AuthData, setAuthData, setIsAuthenticated, DataReserve, setDataReserve }} >
         <NavigationContainer>
         {
           (IsAuthenticated) ?
