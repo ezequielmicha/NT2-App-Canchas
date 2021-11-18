@@ -5,21 +5,9 @@ export default () => {
     return (
         <View style={styles.container}>
             <StatusBar style={'auto'} />
-
-            <View>
-                <Text style={styles.container}> SELECT SHIFT </Text>
-                <TouchableOpacity>
-                
-                    
-
-
-                    <View>
-
-                    </View>
-                </TouchableOpacity>
-
+            <View style={styles.button}>
+                 <Button title="Verificar disponibilidad del turno" />
             </View>
-
         </View>     
     )
 }
@@ -31,4 +19,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    button: {
+        marginTop: 10,
+        marginBottom: 40
+       }
 });

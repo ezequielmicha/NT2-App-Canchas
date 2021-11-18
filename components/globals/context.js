@@ -1,15 +1,20 @@
 import React from "react";
 
 const authData = {
-    name: "namePorDefecto",
-    email: "mailPorDefecto",
-    photoUrl: "photoPorDefecto"
+    name: "",
+    email: "",
+    photoUrl: ""
 }
 
-const sizeSelected = '';
+const dataReserve = {
+    courtSize: "",
+    date: "",
+    hour: "",
+    userEmail: ""
+}
 
 const isAuthenticated = false;
 
-export { authData, isAuthenticated, sizeSelected }
+export { authData, isAuthenticated, dataReserve }
 
-export default React.createContext(authData)
+export default React.createContext({ authData, isAuthenticated, dataReserve })
