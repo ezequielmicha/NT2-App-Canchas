@@ -16,12 +16,12 @@ export default () => {
             <StatusBar style={'auto'} />
             <View>
             <Image
-            style={{width:90, height: 90, paddingBottom: 20}}
+            style={styles.image}
             source={{uri: AuthData.photoUrl}}
                 />
-                <Text> LAS CANCHAS DE UN ANIMAL </Text>
-                <Text> ¡Bienvenid@ {AuthData.name}! </Text>
-                <Text> Tu mail registrado es: {AuthData.email} </Text>
+                <Text > LAS CANCHAS DE UN ANIMAL </Text>
+                <Text > ¡Bienvenid@ {AuthData.name}! </Text>
+                <Text > Tu mail registrado es: {AuthData.email} </Text>
                 <Button
                         title="LOG OUT"
                         color='red'
@@ -39,6 +39,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'column',  
+        paddingHorizontal: 10,
+        paddingVertical: -10,
+        borderRadius: 4, 
+        textAlign: 'center'
     },
     logoutButton: {
         flex: 1,
@@ -46,4 +51,15 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         justifyContent: 'space-between',
     },
+
+     image: {
+        width:90, 
+        height: 90, 
+        paddingBottom: 2,
+        flexDirection: 'column',
+        fontWeight: 'bold',
+        fontSize: 30,
+        marginBottom: 35,
+        margin: 100
+      },
 });
