@@ -12,13 +12,13 @@ import prueba from '../../components/axios/index'
 export default () => {
     //console.log(prueba);
     
-    const cargarReservas = async () => {
-        //prueba.getAllReserves();
-        //prueba.getUserByEmail('ferpallas@gmail.com');
-        //prueba.getReservesById('ferpallas@gmail.com');
-        prueba.addReserveByEmail();
+    // const cargarReservas = async () => {
+    //     //prueba.getAllReserves();
+    //     //prueba.getUserByEmail('ferpallas@gmail.com');
+    //     //prueba.getReservesById('ferpallas@gmail.com');
+    //     prueba.addReserveByEmail();
         //prueba.getUserById("ferpallas@gmail.com");
-    }
+    //}
     //     await fetch("http://192.168.0.127:3000/api/reserves")
     //         .then(res => res.json()) // tratamiento de data para convertirlo en un json
     //         .then(data => {
@@ -27,7 +27,7 @@ export default () => {
     //         })
     // }
 
-    cargarReservas();
+    //cargarReservas();
     
     
 
