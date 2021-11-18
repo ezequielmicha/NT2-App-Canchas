@@ -57,8 +57,8 @@ const styles = StyleSheet.create({
         height: 90, 
         paddingBottom: 2,
         flexDirection: 'column',
-        fontWeight: 'bold',
-        fontSize: 30,
+        //fontWeight: 'bold',
+        //fontSize: 30,
         marginBottom: 35,
         margin: 100
       },
