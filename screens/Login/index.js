@@ -1,14 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image } from 'react-native';
+import * as Google from 'expo-google-app-auth';
+import GlobalContext, { authData } from '../../components/globals/context';
 // import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
-
 // GoogleSignin.configure({
 //   webClientId: '198056780059-cuunk2bi9oo7q5ek9hcsde2h74n96bcj.apps.googleusercontent.com',
 // });
 
-import * as Google from 'expo-google-app-auth';
-import GlobalContext, { authData } from '../../components/globals/context';
 
 export default () => {
     const {AuthData, setAuthData, setIsAuthenticated} = useContext(GlobalContext);

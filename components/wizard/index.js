@@ -3,7 +3,6 @@ import React, { useRef, useState } from "react"
 import { SafeAreaView, Button, View, Text } from "react-native"
 import Wizard from "react-native-wizard"
 
-// Import your own step components
 import Step1 from "../../screens/Reserve/SelectSize";
 import Step2 from "../../screens/Reserve/SelectDate";
 import Step3 from "../../screens/Reserve/SelectShift";
@@ -39,10 +38,11 @@ export default () => {
             backgroundColor: "#FFF",
             borderBottomColor: "#dedede",
             borderBottomWidth: 1,
+            marginTop: 30
           }}>
-          <Button disabled={isFirstStep} title="Prev" onPress={() => wizard.current.prev()} />
-          <Text>{currentStep + 1}. Step</Text>
-          <Button disabled={isLastStep} title="Next" onPress={() => wizard.current.next()} />
+          <Button disabled={isFirstStep} title="Anterior" onPress={() => wizard.current.prev()} />
+          <Text >Reserva paso {currentStep + 1}</Text>
+          <Button disabled={isLastStep} title="Siguiente" onPress={() => wizard.current.next()} />
         </View>
       </SafeAreaView>
       <View style={{ flex: 2, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
@@ -71,6 +71,7 @@ export default () => {
                 height: 10,
                 borderRadius: 5,
                 backgroundColor: index === currentStep ? "#fc0" : "#000",
+                marginTop: 80
               }}
             />
           ))}
@@ -79,3 +80,12 @@ export default () => {
     </View>
   )
 }
+
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center'
+//   },
+// });
