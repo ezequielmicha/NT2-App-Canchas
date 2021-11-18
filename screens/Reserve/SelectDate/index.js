@@ -1,18 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { defaultFormatUtc } from 'moment';
+import GlobalContext, { dataReserve } from '../../../components/globals/context';
 
 export default function App() {
   
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
+  const {DataReserve, setDataReserve} = useContext(GlobalContext);
 
   useEffect(() => {
     console.log('Cambie mi fecha!!!!', date)
-  }, [date])
+    setDataReserve({...DataReserve, date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`, hour: date.getHours().toString()});
+  }, [date]);
+
+
 
   const onChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;

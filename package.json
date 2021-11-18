@@ -8,11 +8,13 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/datetimepicker": "3.5.2",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/material-top-tabs": "^6.0.6",
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
+    "axios": "^0.24.0",
     "expo": "^43.0.2",
     "expo-auth-session": "~3.4.2",
     "expo-cli": "^4.13.0",
@@ -34,8 +36,7 @@
     "react-native-simple-radio-button": "^2.7.4",
     "react-native-tab-view": "^3.1.1",
     "react-native-web": "0.17.1",
-    "react-native-wizard": "^2.1.0",
-    "@react-native-async-storage/async-storage": "~1.15.0"
+    "react-native-wizard": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
