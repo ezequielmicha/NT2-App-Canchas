@@ -25,9 +25,9 @@ export default () =>{
 
     function onPressRadioButton(radioButtonsArray) {
         setRadioButtons(radioButtonsArray);
-        console.log(radioButtons);
+        // console.log(radioButtons);
         const size = radioButtons.find(item => item.selected === true);
-        console.log(size.label);
+        // console.log(size.label);
         setDataReserve({...DataReserve, courtSize: size.label, userEmail: AuthData.email});
     }
 

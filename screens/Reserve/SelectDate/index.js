@@ -14,7 +14,7 @@ export default function App() {
 
   useEffect(() => {
     console.log('Cambie mi fecha!!!!', date)
-    setDataReserve({...DataReserve, date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`, hour: date.getHours().toString()});
+    setDataReserve({...DataReserve, date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`, hour: date.getHours()});
   }, [date]);
 
 
