@@ -48,6 +48,8 @@ export default function App() {
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
+          //minimumDate={new Date()}
+          //maximumDate={new Date()}
           value={date}
           mode={mode}
           is24Hour={true}

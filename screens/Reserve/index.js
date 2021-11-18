@@ -5,16 +5,21 @@ import SelectSize from './SelectSize';
 import { NavigationContainer } from '@react-navigation/native';
 import Wizard from '../../components/wizard';
 import prueba from '../../components/axios/index'
-import axios from 'axios';
+//import axios from 'axios';
 
 
 
 export default () => {
-    console.log(prueba);
+    //console.log(prueba);
     
-    // const cargarReservas = async () => {
-        
-    //     await fetch("http://192.168.0.5:3000/api/reserves")
+    const cargarReservas = async () => {
+        //prueba.getAllReserves();
+        //prueba.getUserByEmail('ferpallas@gmail.com');
+        //prueba.getReservesById('ferpallas@gmail.com');
+        prueba.addReserveByEmail();
+        //prueba.getUserById("ferpallas@gmail.com");
+    }
+    //     await fetch("http://192.168.0.127:3000/api/reserves")
     //         .then(res => res.json()) // tratamiento de data para convertirlo en un json
     //         .then(data => {
     //             console.log(data)
@@ -22,7 +27,7 @@ export default () => {
     //         })
     // }
 
-    // cargarReservas();
+    cargarReservas();
     
     
 
