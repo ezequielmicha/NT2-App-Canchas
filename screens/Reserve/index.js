@@ -72,5 +72,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        paddingHorizontal: 12,
+        paddingVertical: 40,
+        borderRadius: 4,
     },
 });
