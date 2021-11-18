@@ -1,5 +1,5 @@
-import React from 'react'
-//import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { StyleSheet } from 'react-native';
 import Home from '../../screens/Home';
 import Maps from '../../screens/Maps';
 import Califications from '../../screens/Califications';
@@ -7,6 +7,7 @@ import Contact from '../../screens/Contact';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Reserve from '../../screens/Reserve';
 import { Ionicons } from "@expo/vector-icons";
+import Constants from 'expo-constants';
 
 
 export default function MaterialTopTabNavigator() {
@@ -15,6 +16,7 @@ export default function MaterialTopTabNavigator() {
     const iconsSize = 25;
      return (
         <TopTabs.Navigator
+       style={styles.container},
         screenOptions={{
             tabBarShowLabel: false
         }}
@@ -71,3 +73,8 @@ export default function MaterialTopTabNavigator() {
         </TopTabs.Navigator>
      )
 }
+  const styles = StyleSheet.create({
+    container: {
+      marginTop: Constants.statusBarHeight
+    },
+  });
