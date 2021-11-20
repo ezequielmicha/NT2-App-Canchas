@@ -12,9 +12,11 @@ export default function App() {
   const [show, setShow] = useState(false);
   const {DataReserve, setDataReserve} = useContext(GlobalContext);
 
+ 
+
   useEffect(() => {
     console.log('Cambie mi fecha!!!!', date)
-    setDataReserve({...DataReserve, date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`, hour: date.getHours().toString()});
+    setDataReserve({...DataReserve, date: `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`, hour: date.getHours()});
   }, [date]);
 
 
@@ -48,13 +50,16 @@ export default function App() {
       {show && (
         <DateTimePicker
           testID="dateTimePicker"
-          //minimumDate={new Date()}
-          //maximumDate={new Date()}
+          minimumDate={new Date()}
+          maximumDate={new Date().setDate(new Date().getDate() + 10)}
           value={date}
           mode={mode}
           is24Hour={true}
           display="default"
           onChange={onChange}
+          style={{width: 320, backgroundColor: "white"}}
+          minuteInterval={30}
+          textColor="red"
         />
       )}
       <StatusBar style="auto" />
