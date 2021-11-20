@@ -4,7 +4,7 @@ import moment from 'moment';
 import SelectSize from './SelectSize';
 import { NavigationContainer } from '@react-navigation/native';
 import Wizard from '../../components/wizard';
-import prueba from '../../components/axios/index'
+//import prueba from '../../components/axios/index'
 //import axios from 'axios';
 
 
@@ -12,11 +12,12 @@ import prueba from '../../components/axios/index'
 export default () => {
     //console.log(prueba);
     
-    // const cargarReservas = async () => {
+    //const cargarReservas = async () => {
     //     //prueba.getAllReserves();
     //     //prueba.getUserByEmail('ferpallas@gmail.com');
     //     //prueba.getReservesById('ferpallas@gmail.com');
-    //     prueba.addReserveByEmail();
+        //prueba.addReserveByEmail();
+         //console.log("Agregando Reserva");
         //prueba.getUserById("ferpallas@gmail.com");
     //}
     //     await fetch("http://192.168.0.127:3000/api/reserves")
@@ -25,7 +26,7 @@ export default () => {
     //             console.log(data)
     //             // setVehiculos(data)
     //         })
-    // }
+    //}
 
     //cargarReservas();
     

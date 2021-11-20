@@ -47,17 +47,25 @@
 //     //     console.log("USER POR MAIL: ", data)
 //     //})
 // }
-
-// // const url = "http://192.168.0.127:3000/api/reserves/email/addReserve”  
-// // let params = {"name":"admin","password":"admin"};  
-// // fetch(url, {
-// //   method: 'POST',
-// //   headers: {
-// //     'Accept': 'application/json',
-// //     'Content-Type': 'application/json',
-// //   },
-// //   body: JSON.stringify(params)
-// // })
-
-
-// module.exports = {getAllReserves, getUserByEmail, getReservesById, addReserveByEmail}
+const addReserveByEmail= (email,date,hour,courtSize) =>{
+const url = 'http://192.168.0.127:3000/api/reserves/email/addReserve';
+const reserve = {
+        "email": email,
+        "reserve": 
+         {
+        "date": date,
+        "hour": hour,
+        "courtSize": courtSize
+           }
+    };  
+fetch(url, {
+  method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(reserve)
+})
+}
+//getAllReserves, getUserByEmail, getReservesById,
+ module.exports = {addReserveByEmail}
