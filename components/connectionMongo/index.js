@@ -1,3 +1,14 @@
+const getUserByEmail = (email) => {
+  fetch(`http://192.168.0.127:3000/api/users/email/${email}`)
+    .then(res => res.json()) 
+    .then(data => {
+        // console.log("USER POR MAIL: ", data);
+        // console.log("ID: ", data._id);
+        return data;
+    })
+  
+}
+
 // const getAllReserves = async () => {
 //     await fetch("http://192.168.0.127:3000/api/reserves")
 //         .then(res => res.json()) 

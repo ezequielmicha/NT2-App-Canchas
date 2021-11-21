@@ -3,14 +3,9 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image } from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import GlobalContext, { authData } from '../../components/globals/context';
-// import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
-// GoogleSignin.configure({
-//   webClientId: '198056780059-cuunk2bi9oo7q5ek9hcsde2h74n96bcj.apps.googleusercontent.com',
-// });
-
 
 export default () => {
-    const {AuthData, setAuthData, setIsAuthenticated} = useContext(GlobalContext);
+    const {AuthData, setAuthData, setIsAuthenticated, NewUser, setNewUser} = useContext(GlobalContext);
     async function signInWithGoogleAsync() {
   
         console.log("Inicia logueo... ")
@@ -28,6 +23,7 @@ export default () => {
           const { type, accessToken } = result;
           
           setAuthData({...AuthData, name: result.user.name, email: result.user.email, photoUrl: result.user.photoUrl})
+          setNewUser({...NewUser, email: result.user.email, name: result.user.familyName, last: result.user.givenName, userName: result.user.name})
           //console.log(result.user.name);
           setIsAuthenticated(true);
       
@@ -46,14 +42,6 @@ export default () => {
      
     <View style={styles.container}>
       <StatusBar style="auto" />
-      {/* Asi seria con un boton normal */}
-      {/* <Button
-        title="Google Sign in"
-        onPress={() => signInWithGoogleAsync()}
-      /> */}
-
-      {/* Asi seria con un TouchableOpacity que permite agregar varios elementos para que sean "touchables" */}
-      {/* En este ejemplo yo les puse una simple imagen para Google Sign In */}
       <View>
         <Image
         source={require('../../assets/logo.png')}

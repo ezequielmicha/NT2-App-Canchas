@@ -1,14 +1,56 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, StatusBar, StyleSheet, Text, Image, View } from 'react-native';
 import GlobalContext from '../../components/globals/context';
+import { getAllReserves, getUserByEmail, getReservesByUserId, addUser } from "../../components/axios/index"
 
 export default () => {
-    
     const {AuthData} = useContext(GlobalContext)
+    const {NewUser} = useContext(GlobalContext)
     const {setIsAuthenticated} = useContext(GlobalContext);
     const logOut = async () => {
         await setIsAuthenticated(false)
     }
+
+    const [reserves, setReserves] = useState([]);
+    const [user, setUser] = useState([]);
+    const [userReserves, setUserReserves] = useState([]);
+
+    useEffect(async () => {
+        try {
+            let myReserves = await getAllReserves();
+            setReserves(myReserves);
+            let myUser = await getUserByEmail(AuthData.email);
+            setUser(myUser)
+            if (myUser == null){
+                const newUser = {
+                    email: NewUser.email,
+                    name: NewUser.name,
+                    last: NewUser.last,
+                    password: NewUser.password,
+                    userName: NewUser.userName,
+                    reserves: NewUser.reserves
+                }
+                let resAddUser = await addUser(newUser);
+                console.log("resAddUser", resAddUser);
+            }
+            let myUserReserves = await getReservesByUserId(user._id);
+            setUserReserves(myUserReserves)
+        } catch {
+            
+        }
+        
+    }, [])
+    
+    console.log("Todas_Las_Reservas:", reserves);
+    console.log("My_User:", user);
+    if (user != null){
+        console.log("My_ID:", user._id)  
+        console.log(`ESTAS SON LAS RESERVAS DEL USER ${user.userName}:`, userReserves);
+    } else {
+        console.log("No hay usuario registrado con ese ID");
+    }
+        
+    
     
     return (
 
