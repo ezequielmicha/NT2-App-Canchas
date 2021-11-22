@@ -1,12 +1,18 @@
 import axios from 'axios'
 
-const server = 'http://192.168.0.5:3000/api';
+const server = 'http://192.168.0.127:3000/api';
 
 const getAllReserves = async () => {
-    const url = `${server}/reserves/`
+    const url = `${server}/reserves/`;
     let response = await axios.get(url);
     return response.data;
 }
+
+// const login = async () => {
+//     const url = `${server}/users/login`;
+//     const response = await axios.post(url);
+
+// }
 
 const getUserByEmail = async (email) => {
     const url = `${server}/users/email/${email}`;
@@ -20,14 +26,22 @@ const getReservesByUserId = async (id) => {
     return response.data;
 };
 
-const addUser = async (user) => {
+const addUser = async (email,name,last, password, userName,reserves) => {
     const url = `${server}/users`;
-    const response = await axios.post(url, { user: user }, { headers: {
-        'Accept': 'application/json',
+    const params = JSON.stringify({
+        "email": email,
+        "name": name,
+        "last": last,   
+        "password": password,
+        "userName": userName,
+        "reserves": reserves
+    });
+    const response = await axios.post(url, params, { headers: {
+        //'Accept': 'application/json',
         'Content-Type': 'application/json',
       } });
     return response.data;
 };
 
-
-export { getAllReserves, getUserByEmail, getReservesByUserId, addUser };
+// getUserByEmail, getReservesByUserId, addUser 
+export { getAllReserves, getUserByEmail, getReservesByUserId, addUser};
