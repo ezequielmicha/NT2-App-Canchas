@@ -5,6 +5,7 @@ import Login from '../../screens/Login';
 
 
 
+
 export default function LoginNavigator() {
 
 
@@ -18,3 +19,4 @@ export default function LoginNavigator() {
         </Stack.Navigator>
     );
   }
+

@@ -1,8 +1,5 @@
-import React, { useState, useEffect, navigation } from 'react';
-import { Button, StatusBar, StyleSheet, Text, TextInput, View } from 'react-native';
-import moment from 'moment';
-import SelectSize from './SelectSize';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useState, useEffect } from 'react';
+import { StatusBar, StyleSheet, View } from 'react-native';
 import Wizard from '../../components/wizard';
 import prueba from '../../components/axios/index'
 import axios from 'axios';
@@ -15,6 +12,7 @@ export default () => {
     prueba.getReservesById()
     
     
+
 
     return (
        
@@ -33,5 +31,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        paddingHorizontal: 12,
+        paddingVertical: 40,
+        borderRadius: 4,
     },
 });

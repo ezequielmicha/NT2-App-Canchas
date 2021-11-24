@@ -3,16 +3,15 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image } from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import GlobalContext, { authData } from '../../components/globals/context';
-// import { GoogleSignin, GoogleSigninButton } from '@react-native-community/google-signin';
-// GoogleSignin.configure({
-//   webClientId: '198056780059-cuunk2bi9oo7q5ek9hcsde2h74n96bcj.apps.googleusercontent.com',
-// });
-
+import { getUserByEmail, addUser } from "../../components/axios/index";
 
 export default () => {
     const {AuthData, setAuthData, setIsAuthenticated} = useContext(GlobalContext);
     async function signInWithGoogleAsync() {
-  
+    let userAdded; 
+    let id;
+    
+    
         console.log("Inicia logueo... ")
         try {
           
@@ -26,8 +25,29 @@ export default () => {
           const result = await Google.logInAsync(config);
           console.log("Result: ", result)
           const { type, accessToken } = result;
+
+          let myUser = await getUserByEmail(result.user.email);
           
-          setAuthData({...AuthData, name: result.user.name, email: result.user.email, photoUrl: result.user.photoUrl})
+          
+          //name: result.user.familyName, last: result.user.givenName, userName: result.user.name
+              
+              if(myUser === null){
+                myUser = {
+                  name: result.user.givenName,
+                  last: result.user.familyName,
+                  email: result.user.email,
+                  password: AuthData.password,
+                  userName: result.user.name,
+                  reserves: AuthData.reserves,
+                  photoUrl: result.user.photoUrl
+
+                }
+                 userAdded = await addUser(myUser.email, myUser.name, myUser.last, myUser.password, myUser.userName, myUser.reserves);
+                 myUser._id = userAdded.insertedId;
+              }
+          console.log("probando login", myUser);
+          setAuthData(myUser)
+         
           //console.log(result.user.name);
           setIsAuthenticated(true);
       
@@ -46,14 +66,6 @@ export default () => {
      
     <View style={styles.container}>
       <StatusBar style="auto" />
-      {/* Asi seria con un boton normal */}
-      {/* <Button
-        title="Google Sign in"
-        onPress={() => signInWithGoogleAsync()}
-      /> */}
-
-      {/* Asi seria con un TouchableOpacity que permite agregar varios elementos para que sean "touchables" */}
-      {/* En este ejemplo yo les puse una simple imagen para Google Sign In */}
       <View>
         <Image
         source={require('../../assets/logo.png')}

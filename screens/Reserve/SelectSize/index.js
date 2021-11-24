@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Text, View, StyleSheet} from 'react-native';
 import RadioGroup from 'react-native-radio-buttons-group';
-import { RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
+//import { RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button';
 import GlobalContext, { dataReserve, authData } from '../../../components/globals/context';
 
 const radioButtonsData = [{

@@ -1,30 +1,52 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, StatusBar, StyleSheet, Text, Image, View } from 'react-native';
 import GlobalContext from '../../components/globals/context';
+import Constants from "expo-constants";
+import FlatListContacts from '../../components/userReserveList/flatList';
+import { useFocusEffect } from '@react-navigation/native';
+import { getReservesByUserId } from "../../components/axios/index";
 
 export default () => {
-    
-    const {AuthData} = useContext(GlobalContext)
+    const {AuthData, setAuthData} = useContext(GlobalContext)
     const {setIsAuthenticated} = useContext(GlobalContext);
+
+    const reserves = async () => {
+       const newReserves =await getReservesByUserId(AuthData._id);
+       setAuthData({...AuthData, reserves: newReserves})
+
+    }
+
+        useFocusEffect(
+          React.useCallback(() => {
+             reserves();
+            
+                
+          }, [])
+        );
+      
+     
+
+
     const logOut = async () => {
         await setIsAuthenticated(false)
     }
-    
+     
     return (
 
         <View style={styles.container}>
             <StatusBar style={'auto'} />
             <View>
+            <FlatListContacts reserves={AuthData.reserves} />
             <Image
-            style={{width:90, height: 90, paddingBottom: 20}}
+            style={styles.image}
             source={{uri: AuthData.photoUrl}}
                 />
-                <Text> LAS CANCHAS DE UN ANIMAL </Text>
-                <Text> ¡Bienvenid@ {AuthData.name}! </Text>
-                <Text> Tu mail registrado es: {AuthData.email} </Text>
+                <Text > LAS CANCHAS LA LORA!! </Text>
+                <Text > ¡Bienvenid@ {AuthData.name}! </Text>
+                <Text > Tu mail registrado es: {AuthData.email} </Text>
                 <Button
                         title="LOG OUT"
-                        color='red'
+                        //color='red'
                         onPress={logOut}
                         style={styles.logoutButton}
                 />
@@ -39,6 +61,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        flexDirection: 'column',  
+        paddingHorizontal: 10,
+        paddingVertical: -10,
+        borderRadius: 4, 
+        textAlign: 'center'
     },
     logoutButton: {
         flex: 1,
@@ -46,4 +73,15 @@ const styles = StyleSheet.create({
         paddingTop: 20,
         justifyContent: 'space-between',
     },
+
+     image: {
+        width:90, 
+        height: 90, 
+        paddingBottom: 2,
+        flexDirection: 'column',
+        //fontWeight: 'bold',
+        //fontSize: 30,
+        marginBottom: 35,
+        margin: 100
+      },
 });
