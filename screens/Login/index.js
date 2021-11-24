@@ -3,11 +3,15 @@ import React, { useContext } from 'react';
 import { StyleSheet, Text, View, Button, TouchableOpacity, Image } from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import GlobalContext, { authData } from '../../components/globals/context';
+import { getUserByEmail, addUser } from "../../components/axios/index";
 
 export default () => {
-    const {AuthData, setAuthData, setIsAuthenticated, NewUser, setNewUser} = useContext(GlobalContext);
+    const {AuthData, setAuthData, setIsAuthenticated} = useContext(GlobalContext);
     async function signInWithGoogleAsync() {
-  
+    let userAdded; 
+    let id;
+    
+    
         console.log("Inicia logueo... ")
         try {
           
@@ -21,9 +25,29 @@ export default () => {
           const result = await Google.logInAsync(config);
           console.log("Result: ", result)
           const { type, accessToken } = result;
+
+          let myUser = await getUserByEmail(result.user.email);
           
-          setAuthData({...AuthData, name: result.user.name, email: result.user.email, photoUrl: result.user.photoUrl})
-          setNewUser({...NewUser, email: result.user.email, name: result.user.familyName, last: result.user.givenName, userName: result.user.name})
+          
+          //name: result.user.familyName, last: result.user.givenName, userName: result.user.name
+              
+              if(myUser === null){
+                myUser = {
+                  name: result.user.givenName,
+                  last: result.user.familyName,
+                  email: result.user.email,
+                  password: AuthData.password,
+                  userName: result.user.name,
+                  reserves: AuthData.reserves,
+                  photoUrl: result.user.photoUrl
+
+                }
+                 userAdded = await addUser(myUser.email, myUser.name, myUser.last, myUser.password, myUser.userName, myUser.reserves);
+                 myUser._id = userAdded.insertedId;
+              }
+          console.log("probando login", myUser);
+          setAuthData(myUser)
+         
           //console.log(result.user.name);
           setIsAuthenticated(true);
       
