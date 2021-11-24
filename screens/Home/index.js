@@ -1,62 +1,42 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Button, StatusBar, StyleSheet, Text, Image, View } from 'react-native';
 import GlobalContext from '../../components/globals/context';
-import { getAllReserves, getUserByEmail, getReservesByUserId, addUser } from "../../components/axios/index"
 import Constants from "expo-constants";
-import FlatListContacts from '../../components/userReserveList/flatList'
+import FlatListContacts from '../../components/userReserveList/flatList';
+import { useFocusEffect } from '@react-navigation/native';
+import { getReservesByUserId } from "../../components/axios/index";
 
 export default () => {
-    const {AuthData} = useContext(GlobalContext)
-    const {NewUser} = useContext(GlobalContext)
+    const {AuthData, setAuthData} = useContext(GlobalContext)
     const {setIsAuthenticated} = useContext(GlobalContext);
-    
-    const [user, setUser] = useState([]);
-    const [userReserves, setUserReserves] = useState([]);
-    
-    useEffect(async () => {
-        try {
+
+    const reserves = async () => {
+       const newReserves =await getReservesByUserId(AuthData._id);
+       setAuthData({...AuthData, reserves: newReserves})
+
+    }
+
+        useFocusEffect(
+          React.useCallback(() => {
+             reserves();
+            
                 
-            const myUser = await getUserByEmail(NewUser.email);
-            setUser(myUser)
-            
-            if(user === null){
-                await addUser(NewUser.email, NewUser.name, NewUser.last, NewUser.password, NewUser.userName, NewUser.reserves);
-            }
-            
-        } catch {
-            
-        }
-        
-    }, [])
+          }, [])
+        );
+      
+     
 
-    useEffect(async () => {
-        try {
-            console.log("USER ID",user._id);
-            const loggedUserReserves = await getReservesByUserId(user._id);
-            setUserReserves(loggedUserReserves);
-            
-        } catch {
-            
-        }
-        
-    }, [])
-
-    console.log("MONGO USER", user);
-    console.log('RESERVAS USUARIO', userReserves);
 
     const logOut = async () => {
         await setIsAuthenticated(false)
     }
-    
-        
-    
-    
+     
     return (
 
         <View style={styles.container}>
             <StatusBar style={'auto'} />
             <View>
-            <FlatListContacts reserves={userReserves} />
+            <FlatListContacts reserves={AuthData.reserves} />
             <Image
             style={styles.image}
             source={{uri: AuthData.photoUrl}}
