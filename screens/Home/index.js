@@ -6,7 +6,7 @@ import FlatListContacts from '../../components/userReserveList/flatList';
 import { useFocusEffect } from '@react-navigation/native';
 import { getReservesByUserId } from "../../components/axios/index";
 
-export default () => {
+export default ({navigation}) => {
     const {AuthData, setAuthData} = useContext(GlobalContext)
     const {setIsAuthenticated} = useContext(GlobalContext);
 
@@ -24,7 +24,7 @@ export default () => {
           }, [])
         );
       
-     
+      
 
 
     const logOut = async () => {
@@ -40,7 +40,17 @@ export default () => {
             <Image
             style={styles.image}
             source={{uri: AuthData.photoUrl}}
+            
                 />
+                  <Button
+                    title="NUEVA RESERVA"
+                    //color='red'
+                    onPress={() =>{
+                         navigation.navigate("Reservas")
+                    }}
+                    style={styles.logoutButton}
+                />
+
                 <Text > LAS CANCHAS LA LORA!! </Text>
                 <Text > ¡Bienvenid@ {AuthData.name}! </Text>
                 <Text > Tu mail registrado es: {AuthData.email} </Text>
