@@ -7,28 +7,25 @@ import { useFocusEffect } from '@react-navigation/native';
 import { getReservesByUserId } from "../../components/axios/index";
 
 export default ({navigation}) => {
-    const {AuthData, setAuthData} = useContext(GlobalContext)
+    const {AuthData, setAuthData, setDataReserve} = useContext(GlobalContext)
     const {setIsAuthenticated} = useContext(GlobalContext);
 
     const reserves = async () => {
-       const newReserves =await getReservesByUserId(AuthData._id);
+       const newReserves = await getReservesByUserId(AuthData._id);
        setAuthData({...AuthData, reserves: newReserves})
-
     }
-
         useFocusEffect(
           React.useCallback(() => {
-             reserves();
-            
-                
+             reserves();            
           }, [])
         );
       
-      
-
-
     const logOut = async () => {
+        const newAuthData = { _id: "", email: "", name: "", last: "", password: "123456", userName: "", reserves: [], photoUrl: "" }
+        const newDataReserve = { date: "", hour: "", courtSize: "", userEmail: "" }
         await setIsAuthenticated(false)
+        await setAuthData(newAuthData)
+        await setDataReserve(newDataReserve)
     }
      
     return (
