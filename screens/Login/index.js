@@ -1,18 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useContext } from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import * as Google from 'expo-google-app-auth';
-import GlobalContext, { authData } from '../../components/globals/context';
+import GlobalContext from '../../components/globals/context';
 import { getUserByEmail, addUser } from "../../components/axios/index";
 
 export default () => {
     const {AuthData, setAuthData, setIsAuthenticated} = useContext(GlobalContext);
     async function signInWithGoogleAsync() {
     let userAdded; 
-    let id;
     
-    
-        console.log("Inicia logueo... ")
+        console.log("Inicia el logueo")
         try {
           
           const config = {
@@ -23,13 +21,10 @@ export default () => {
           };
            
           const result = await Google.logInAsync(config);
-          console.log("Result: ", result)
+          console.log("Resultado del logueo: ", result)
           const { type, accessToken } = result;
 
           let myUser = await getUserByEmail(result.user.email);
-          
-          
-          //name: result.user.familyName, last: result.user.givenName, userName: result.user.name
               
               if(myUser === null){
                 myUser = {
@@ -40,15 +35,13 @@ export default () => {
                   userName: result.user.name,
                   reserves: AuthData.reserves,
                   photoUrl: result.user.photoUrl
-
                 }
+
                  userAdded = await addUser(myUser.email, myUser.name, myUser.last, myUser.password, myUser.userName, myUser.reserves);
                  myUser._id = userAdded.insertedId;
               }
-          console.log("probando login", myUser);
+          // console.log("probando login", myUser);
           setAuthData(myUser)
-         
-          //console.log(result.user.name);
           setIsAuthenticated(true);
       
           if (type === 'success') {
