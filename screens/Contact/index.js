@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
-import { Button, StatusBar, StyleSheet, Text, TextInput, View, ImageBackground } from 'react-native';
+import { Button, StatusBar, StyleSheet, Text, Image, View, ImageBackground } from 'react-native';
+import GlobalContext from '../../components/globals/context';
 import { Linking } from 'react-native';
 
 export default () => {
 
-    const image = { uri: "https://www.ringtina.com.ar/Descargar/Fondos%20de%20Pantalla/Deportes/ImgDeportes%20056.jpg" };
+    const {AuthData, setAuthData} = useContext(GlobalContext)
+    const {setIsAuthenticated} = useContext(GlobalContext);
 
     const handleCallPress = async () => {
         await Linking.openURL("tel:+5491144109209");
@@ -22,6 +24,12 @@ export default () => {
         await Linking.openURL("sms:+5491144109209&body=Hola, queria hacer una consulta");
     };
 
+    const logOut = async () => {
+        const newAuthData = { _id: "", email: "", name: "", last: "", password: "123456", userName: "", reserves: [], photoUrl: "" }
+        await setIsAuthenticated(false)
+        await setAuthData(newAuthData)
+    }
+
     return (
         <View style={styles.container}>
             
@@ -29,6 +37,18 @@ export default () => {
          
        
             <StatusBar style={'auto'} />
+
+            <Image
+            style={styles.image}
+            source={{uri: AuthData.photoUrl}}/>
+
+            <Text style={styles.text}> Tu mail registrado es: {AuthData.email} </Text>
+         
+            <Button
+            title="LOG OUT"
+            color='red'
+            onPress={logOut}
+            style={styles.button}/>
 
             <Text style={styles.title}> CONTACTOS </Text>
             
@@ -65,19 +85,25 @@ export default () => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-        
+        alignItems: 'center'
     },
     title: {
         color: 'black',
         flexDirection: 'column',
         fontWeight: 'bold',
+        textAlign: "center",
         fontSize: 30,
-        marginBottom: 35,
-        margin: 100
+        margin: 10
 
+    },
+    text: {
+        color: 'black',
+        flexDirection: 'column',
+        fontWeight: 'bold',
+        fontSize: 20,
+        marginTop: 50,
+        marginBottom: 20,
+        textAlign: "center"
     },
 
     background: {
@@ -88,10 +114,15 @@ const styles = StyleSheet.create({
 
     button: {
         flex: 1,
-        margin: 80,
+        margin: 30,
         flexDirection: 'column',
-        justifyContent: 'space-between',
-        
-    }
-
+        justifyContent: 'space-between'
+    },
+    image: {
+        width: 90, 
+        height: 90,
+        flexDirection: 'column',
+        margin: 30,
+        alignContent: 'center'
+      },
 });
