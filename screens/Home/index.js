@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Button, StatusBar, StyleSheet, Text, Image, View } from 'react-native';
+import { Button, StatusBar, StyleSheet, Text, Image, View, ImageBackground } from 'react-native';
 import GlobalContext from '../../components/globals/context';
 import Constants from "expo-constants";
 import FlatListContacts from '../../components/userReserveList/flatList';
@@ -19,45 +19,26 @@ export default ({navigation}) => {
              reserves();            
           }, [])
         );
-      
-    const logOut = async () => {
-        const newAuthData = { _id: "", email: "", name: "", last: "", password: "123456", userName: "", reserves: [], photoUrl: "" }
-        const newDataReserve = { date: "", hour: "", courtSize: "", userEmail: "" }
-        await setIsAuthenticated(false)
-        await setAuthData(newAuthData)
-        await setDataReserve(newDataReserve)
-    }
      
     return (
 
         <View style={styles.container}>
+            <ImageBackground source={require('../../assets/fondo.png')} style={styles.background}>
             <StatusBar style={'auto'} />
             <View>
+            <Text style={styles.text}> LAS CANCHAS LA LORA!! </Text>
+            <Text style={styles.text}> ¡Bienvenid@ {AuthData.name}! </Text>
+            <Text style={styles.text}> Estas son tus reservas hasta la fecha: </Text>
             <FlatListContacts reserves={AuthData.reserves} />
-            <Image
-            style={styles.image}
-            source={{uri: AuthData.photoUrl}}
-            
-                />
                   <Button
                     title="NUEVA RESERVA"
-                    //color='red'
+                    color='black'
                     onPress={() =>{
                          navigation.navigate("Reservas")
                     }}
-                    style={styles.logoutButton}
-                />
-
-                <Text > LAS CANCHAS LA LORA!! </Text>
-                <Text > ¡Bienvenid@ {AuthData.name}! </Text>
-                <Text > Tu mail registrado es: {AuthData.email} </Text>
-                <Button
-                        title="LOG OUT"
-                        //color='red'
-                        onPress={logOut}
-                        style={styles.logoutButton}
                 />
             </View>
+            </ImageBackground>
         </View>     
     )
 }
@@ -65,30 +46,25 @@ export default ({navigation}) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',  
-        paddingHorizontal: 10,
-        paddingVertical: -10,
-        borderRadius: 4, 
-        textAlign: 'center'
+        flexDirection: 'column'
     },
-    logoutButton: {
-        flex: 1,
-        margin: 80,
-        paddingTop: 20,
-        justifyContent: 'space-between',
-    },
-
-     image: {
-        width:90, 
-        height: 90, 
-        paddingBottom: 2,
+    text: {
+        color: 'black',
         flexDirection: 'column',
-        //fontWeight: 'bold',
-        //fontSize: 30,
-        marginBottom: 35,
-        margin: 100
+        fontWeight: 'bold',
+        fontSize: 20,
+        textAlign: "center"
+    },
+    background: {
+        flex: 1,
+        justifyContent: "center",
+        width: 400
       },
+    button: {
+        flex: 1,
+        margin: 30,
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+    }
 });
