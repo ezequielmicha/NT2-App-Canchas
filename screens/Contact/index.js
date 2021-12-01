@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Button, StatusBar, StyleSheet, Text, Image, View, ImageBackground } from 'react-native';
 import GlobalContext from '../../components/globals/context';
+import AwesomeButtonRick from "react-native-really-awesome-button/src/themes/rick";
 import { Linking } from 'react-native';
 
 export default () => {
@@ -38,44 +39,51 @@ export default () => {
        
             <StatusBar style={'auto'} />
 
+            <Text style={styles.title}> CONTACTOS </Text>
+            
+            <View style = {styles.button}>
+                
+                <AwesomeButtonRick 
+                type="secondary" style={styles.aniButtons} width={300}
+                onPress={handleCallPress}>
+                    <Text>Llamar</Text>
+                </AwesomeButtonRick>
+
+                <AwesomeButtonRick 
+                type="secondary" style={styles.aniButtons} width={300}
+                onPress={handleWhatsAppPress}>
+                    <Text>WhatsApp</Text>
+                </AwesomeButtonRick>
+
+                <AwesomeButtonRick 
+                type="secondary" style={styles.aniButtons} width={300}
+                onPress={handleEmailPress}>
+                    <Text>Email</Text>
+                </AwesomeButtonRick>
+
+                <AwesomeButtonRick 
+                type="secondary" style={styles.aniButtons} width={300}
+                onPress={handleSMSPress}>
+                    <Text>SMS</Text>
+                </AwesomeButtonRick>
+                
+            </View>
+            
             <Image
             style={styles.image}
             source={{uri: AuthData.photoUrl}}/>
 
             <Text style={styles.text}> Tu mail registrado es: {AuthData.email} </Text>
-         
-            <Button
-            title="LOG OUT"
-            color='red'
-            onPress={logOut}
-            style={styles.button}/>
-
-            <Text style={styles.title}> CONTACTOS </Text>
             
-            <View style = {styles.button}>
-                
-                <Button 
-                color='black'
-                title="Llamar" 
-                onPress={handleCallPress}
-                />
-                <Button 
-                color='black'
-                title="WhatsApp" 
-                onPress={handleWhatsAppPress}
-                />
-                <Button 
-                color='black'
-                title="Email" 
-                onPress={handleEmailPress}
-                />
-                <Button 
-                color='black'
-                title="SMS" 
-                onPress={handleSMSPress}
-                />
-                
-            </View>
+            <AwesomeButtonRick type="primary" style={styles.aniButtons} width={300}
+            backgroundColor={'#fc3535'}
+            borderColor={'#a11d1d'}
+            backgroundShadow={'#821b1b'}
+            backgroundDarker={'#821b1b'}
+            onPress={logOut}
+            >
+                <Text style={{color:'white'}}>LOG OUT</Text>
+            </AwesomeButtonRick>
 
             </ImageBackground>
         </View>     
@@ -92,17 +100,18 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         fontWeight: 'bold',
         textAlign: "center",
+        marginTop: 20,
         fontSize: 30,
-        margin: 10
-
     },
     text: {
         color: 'black',
         flexDirection: 'column',
         fontWeight: 'bold',
+        backgroundColor: 'white',
+        borderColor: 'white',
+        borderRadius: 5,
         fontSize: 20,
-        marginTop: 50,
-        marginBottom: 20,
+        marginTop: 30,
         textAlign: "center"
     },
 
@@ -114,15 +123,19 @@ const styles = StyleSheet.create({
 
     button: {
         flex: 1,
-        margin: 30,
+        margin: 10,
         flexDirection: 'column',
         justifyContent: 'space-between'
+    },
+    aniButtons: {
+        margin: 10,
+        alignSelf: 'center',
     },
     image: {
         width: 90, 
         height: 90,
         flexDirection: 'column',
-        margin: 30,
+        margin: 20,
         alignContent: 'center'
       },
 });
