@@ -4,6 +4,7 @@ import GlobalContext from '../../components/globals/context';
 import Constants from "expo-constants";
 import FlatListContacts from '../../components/userReserveList/flatList';
 import { useFocusEffect } from '@react-navigation/native';
+import AwesomeButtonRick from "react-native-really-awesome-button/src/themes/rick";
 import { getReservesByUserId } from "../../components/axios/index";
 
 export default ({navigation}) => {
@@ -30,13 +31,14 @@ export default ({navigation}) => {
             <Text style={styles.text}> ¡Bienvenid@ {AuthData.name}! </Text>
             <Text style={styles.text}> Estas son tus reservas hasta la fecha: </Text>
             <FlatListContacts reserves={AuthData.reserves} />
-                  <Button
-                    title="NUEVA RESERVA"
-                    color='black'
+                  <AwesomeButtonRick
+                  style={styles.aniButtons}
+                  type={'secondary'}
+                  width={300}
                     onPress={() =>{
                          navigation.navigate("Reservas")
                     }}
-                />
+                ><Text>NUEVA RESERVA</Text></AwesomeButtonRick>
             </View>
             </ImageBackground>
         </View>     
@@ -61,10 +63,8 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         width: 400
       },
-    button: {
-        flex: 1,
-        margin: 30,
-        flexDirection: 'column',
-        justifyContent: 'space-between'
-    }
+    aniButtons: {
+        margin: 10,
+        alignSelf: 'center',
+    },
 });
