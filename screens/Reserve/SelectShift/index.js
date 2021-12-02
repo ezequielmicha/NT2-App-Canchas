@@ -59,7 +59,7 @@ export default () => {
                  <Text style={{fontSize:15,textAlign: 'left'}}>Tamaño de la cancha: {DataReserve.courtSize}</Text>
                  <Text style={{fontSize:15,textAlign: 'left'}}>Día: {DataReserve.date}</Text>
                  <Text style={{fontSize:15,textAlign: 'left'}}>Hora: {DataReserve.hour}</Text>
-                 <Button title="Verificar disponibilidad del turno" onPress={agregarReserva}/>
+                 <Button title="Verificar disponibilidad del turno y agendar" onPress={agregarReserva}/>
             </View>
         </View>     
     )

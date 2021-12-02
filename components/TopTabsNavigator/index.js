@@ -6,14 +6,8 @@ import Califications from '../../screens/Califications';
 import Contact from '../../screens/Contact';
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Reserve from '../../screens/Reserve';
-
-//import { Dimensions, StyleSheet, Text, View,ImageBackground } from 'react-native';
-
-
 import { Ionicons } from "@expo/vector-icons";
 import Constants from 'expo-constants';
-
-
 
 export default function MaterialTopTabNavigator() {
 

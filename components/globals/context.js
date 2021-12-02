@@ -15,11 +15,19 @@ const dataReserve = {
     date: "",
     hour: "",
     courtSize: "",
-    userEmail: ""
+    userEmail: "",
+    calificated: ""
+}
+
+const reserveToCalificate = {
+    date: "",
+    hour: "",
+    courtSize: "",
+    calificated: ""
 }
 
 const isAuthenticated = false;
 
-export { authData, isAuthenticated, dataReserve }
+export { authData, isAuthenticated, dataReserve, reserveToCalificate }
 
-export default React.createContext({ authData, isAuthenticated, dataReserve })
+export default React.createContext({ authData, isAuthenticated, dataReserve, reserveToCalificate })
