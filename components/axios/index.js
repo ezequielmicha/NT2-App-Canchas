@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const server = 'http://192.168.0.104:3000/api';
+const server = 'http://192.168.0.8:3000/api';
 
 const getAllReserves = async () => {
     const url = `${server}/reserves/`;
@@ -38,7 +38,39 @@ const addReserve = async (id, date, hour, courtSize) => {
         "reserve": {
                     "date": date,
                     "hour": hour,
-                    "courtSize": courtSize
+                    "courtSize": courtSize,
+                    "calificated": false
+                   }
+    });
+    const response = await axios.put(url, params, { headers: {
+        //'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    } })
+    return response.data;
+};
+
+const addCalification = async (size, calification) => {
+    const url = `${server}/califications`;
+    const params = JSON.stringify({
+        "size": size,
+        "calification": calification
+    });
+    const response = await axios.put(url, params, { headers: {
+        //'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    } })
+    return response.data;
+};
+
+const markReserveAsCalificated = async (id, date, hour, courtSize, calificated) => {
+    const url = `${server}/reserves/markAsCalificated`;
+    const params = JSON.stringify({
+        "_id": id,
+        "reserve": {
+                    "date": date,
+                    "hour": hour,
+                    "courtSize": courtSize,
+                    "calificated": calificated
                    }
     });
     const response = await axios.put(url, params, { headers: {
@@ -53,4 +85,4 @@ const addReserve = async (id, date, hour, courtSize) => {
 //     const response = await axios.post(url);
 
 // }
-export { getAllReserves, getUserByEmail, getReservesByUserId, addUser, addReserve};
+export { getAllReserves, getUserByEmail, getReservesByUserId, addUser, addReserve, markReserveAsCalificated, addCalification};
