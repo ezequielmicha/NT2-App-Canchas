@@ -20,10 +20,10 @@ export default function App() {
 
         <NavigationContainer>
         {
-          //(IsAuthenticated) ?
+          (IsAuthenticated) ?
           <MaterialTopTabNavigator />
-          //:
-          //<LoginNavigator/>
+          :
+          <LoginNavigator/>
         }
         </NavigationContainer>
 
