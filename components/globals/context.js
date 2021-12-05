@@ -16,7 +16,8 @@ const dataReserve = {
     hour: "",
     courtSize: "",
     userEmail: "",
-    calificated: ""
+    calificated: "",
+    payMethod: ""
 }
 
 const reserveToCalificate = {

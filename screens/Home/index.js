@@ -9,6 +9,7 @@ import { getReservesByUserId } from "../../components/axios/index";
 
 export default ({navigation}) => {
     const {AuthData, setAuthData} = useContext(GlobalContext)
+    
     const reserves = async () => {
        const newReserves = await getReservesByUserId(AuthData._id);
        setAuthData({...AuthData, reserves: newReserves})
@@ -29,12 +30,12 @@ export default ({navigation}) => {
         <View style={styles.container}>
             <ImageBackground source={require('../../assets/fondo.png')} style={styles.background}>
             <StatusBar style={'auto'} />
-            <View>
-            {/* <Text style={styles.text}> LAS CANCHAS LA LORA!! </Text> */}
-            <Text style={styles.text}> ¡Bienvenid@ {AuthData.name}! </Text>
-            <Text style={styles.text}> Estas son tus reservas hasta la fecha: </Text>
-            <Text style={styles.text2}> Presioná sobre la reserva que queres calificar </Text>
-            <FlatListContacts reserves={AuthData.reserves} goToCal={goToCalifications}/>
+            <View style={styles.container2}>
+                {/* <Text style={styles.text}> LAS CANCHAS LA LORA!! </Text> */}
+                <Text style={styles.text}> ¡Bienvenid@ {AuthData.name}! </Text>
+                <Text style={styles.text}> Estas son tus reservas hasta la fecha: </Text>
+                <Text style={styles.text2}> Presioná sobre la reserva que queres calificar </Text>
+                <FlatListContacts reserves={AuthData.reserves} goToCal={goToCalifications}/>
                   <AwesomeButtonRick
                   style={styles.aniButtons}
                   type={'secondary'}
@@ -54,6 +55,11 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
+        flexDirection: 'column'
+    },
+    container2: {
+        flex: 2,
+        alignItems: 'stretch',
         flexDirection: 'column'
     },
     text: {

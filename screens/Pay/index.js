@@ -21,19 +21,21 @@ const radioButtonsData = [{
     value: 'option4'
 }]
 
-export default ({navigation}) =>{
+export default ({goToHo}) =>{
     const {DataReserve, setDataReserve} = useContext(GlobalContext);
     const [radioButtons, setRadioButtons] = useState(radioButtonsData);
-
+    
     function onPressRadioButton(radioButtonsArray) {
         setRadioButtons(radioButtonsArray);
         const payMethodSel = radioButtons.find(item => item.selected === true);
         setDataReserve({...DataReserve, payMethod: payMethodSel.label});
     }
 
+    
+    
     return (
         <View>
-            <Text style={styles.text} > Seleccione el medio para realizar el pago</Text>
+            <Text style={styles.text} > Seleccione el medio para realizar el pago de la seña</Text>
             <RadioGroup 
                 radioButtons={radioButtons} 
                 onPress={onPressRadioButton} 
@@ -43,8 +45,13 @@ export default ({navigation}) =>{
                                 title="PAGAR"
                                 color='green'
                                 onPress={() => {
-                                    alert("Pago realizado correctamente")
-                                    // navigation.navigate("Reservas")
+                                    if (DataReserve.payMethod !== "") {
+                                        alert("Pago realizado correctamente")
+                                        goToHo()
+                                    } else {
+                                        alert("No realizó ninguna selección. Vuelva a intentarlo")
+                                    }
+                                    
                                 }}
                         />
             </View>

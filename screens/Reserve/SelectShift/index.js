@@ -4,26 +4,25 @@ import GlobalContext from '../../../components/globals/context';
 import { addReserve, getAllReserves, getReservesByUserId } from "../../../components/axios/index";
 import { call } from "../../../components/wizard/index";
 
-export default () => {
+export default ({next, prev}) => {
     const {DataReserve} = useContext(GlobalContext);
     const {AuthData} = useContext(GlobalContext);
 
     const agregarReserva = async () => {
         try {
-            // console.log("ID", AuthData._id);
-            // console.log("date", DataReserve.date);
-            // console.log("hour", DataReserve.hour);
-            // console.log("courtSize", DataReserve.courtSize);
-
-            // console.log("courtSize_TYPE", DataReserve.courtSize.type);
-            // no estamos pudiendo validar que todos los datos de la reserva sean distintos de null
-            // en el if de abajo deberia validar eso tambien para poder agregar una reserva
-            if (await verificarReserva()) {
-                addReserve(AuthData._id, DataReserve.date, DataReserve.hour, DataReserve.courtSize);
-                alert("Reserva agregada correctamente")
-            } 
+            if (DataReserve.courtSize === "") {
+                alert("No puede agregar una reserva sin especificar el tamaño de la cancha")
+            }
             else {
-                alert("No se pudo agregar la reserva. Vuelva a seleccionar las opciones")
+                if (await verificarReserva()) {
+                    addReserve(AuthData._id, DataReserve.date, DataReserve.hour, DataReserve.courtSize);
+                    alert("Reserva agregada correctamente")
+                    next()
+                } 
+                else {
+                    alert("No se pudo agregar la reserva. Vuelva a seleccionar las opciones")
+                    prev()
+                }
             }
         } catch (error) {
             
@@ -38,16 +37,19 @@ export default () => {
         const userReserves = await getReservesByUserId(AuthData._id);
         const findUserReserve = await userReserves.find(reserve => reserve.date === DataReserve.date && reserve.hour === DataReserve.hour);
 
-        if (findReserve){
-            alert("Turno ya reservado")
-            res = false;
-        }
-        
-        if (findUserReserve){
+        if (findReserve && findUserReserve) {
             alert("Usted ya tiene una reserva en este día y horario")
             res = false;
+        } else if (findReserve) {
+            alert("Turno ya reservado")
+            res = false;
+        } else if (findUserReserve) {
+            alert("Usted ya tiene una reserva en este día y horario")
+            res = false;
+        }{
+            
         }
-        
+       
         return res;    
     }
 

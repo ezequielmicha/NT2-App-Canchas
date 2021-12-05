@@ -2,8 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import Wizard from '../../components/wizard';
 
-export default () => {
+export default ({navigation}) => {
     
+    const goToHome = () => {
+        navigation.navigate("Home")
+    }
+
     return (
        
         <View style={styles.container}>
@@ -12,7 +16,7 @@ export default () => {
             <View>
                     
             
-                <Wizard/>
+                <Wizard goToHo={goToHome}/>
                 
             </View>
 
