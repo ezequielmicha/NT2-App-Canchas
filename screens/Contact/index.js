@@ -6,7 +6,7 @@ import { Linking } from 'react-native';
 
 export default () => {
 
-    const {AuthData, setAuthData} = useContext(GlobalContext)
+    const {AuthData, setAuthData, setDataReserve} = useContext(GlobalContext)
     const {setIsAuthenticated} = useContext(GlobalContext);
 
     const handleCallPress = async () => {
@@ -27,8 +27,10 @@ export default () => {
 
     const logOut = async () => {
         const newAuthData = { _id: "", email: "", name: "", last: "", password: "123456", userName: "", reserves: [], photoUrl: "" }
+        const newDataReserve = { date: "", hour: "", courtSize: "", userEmail: "", calificated: "", payMethod: "" }
         await setIsAuthenticated(false)
         await setAuthData(newAuthData)
+        await setDataReserve(newDataReserve)
     }
 
     return (

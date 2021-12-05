@@ -80,9 +80,15 @@ const markReserveAsCalificated = async (id, date, hour, courtSize, calificated) 
     return response.data;
 };
 
+const getCalificationsBySize = async (size) => {
+    const url = `${server}/califications/size/${size}`;
+    const response = await axios.get(url);
+    return response.data;
+};
+
 // const login = async () => {
 //     const url = `${server}/users/login`;
 //     const response = await axios.post(url);
 
 // }
-export { getAllReserves, getUserByEmail, getReservesByUserId, addUser, addReserve, markReserveAsCalificated, addCalification};
+export { getAllReserves, getUserByEmail, getReservesByUserId, addUser, addReserve, markReserveAsCalificated, addCalification, getCalificationsBySize};

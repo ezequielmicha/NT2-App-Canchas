@@ -19,9 +19,9 @@ export default ({ reserve, goToCal }) => {
         }
         >
             <View style={styles.row}>
-                <Text style={styles.text}>Dia: {reserve.date}</Text>
-                <Text style={styles.text}>Horario: {reserve.hour}</Text>
-                <Text style={styles.text}>Cancha: {reserve.courtSize}</Text>
+                <Text style={styles.text}>Dia: <Text style={styles.text3}> {reserve.date} </Text></Text>
+                <Text style={styles.text}>Horario: <Text style={styles.text3}> {reserve.hour} </Text></Text>
+                <Text style={styles.text}>Cancha: <Text style={styles.text3}> {reserve.courtSize} </Text></Text>
                 {(reserve.calificated) == false ? <Text style={styles.text2}>Reserva no calificada </Text> : null }
             </View>
         </TouchableOpacity>
@@ -31,14 +31,18 @@ export default ({ reserve, goToCal }) => {
 
 const styles = StyleSheet.create({
     row: {
-        padding: 15
+        padding: 15,
     },
     text: {
-        fontSize: 18
+        fontSize: 18,
     },
     text2: {
         fontSize: 16,
         color: "red"
+    },
+    text3: {
+        fontSize: 20,
+        fontWeight: "bold",
     }
 
 })

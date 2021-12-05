@@ -8,7 +8,7 @@ import Step2 from "../../screens/Reserve/SelectDate";
 import Step3 from "../../screens/Reserve/SelectShift";
 import Step4 from "../../screens/Pay";
 
-export default () => {
+export default ({goToHo}) => {
   const wizard = useRef()
   const [isFirstStep, setIsFirstStep] = useState(true)
   const [isLastStep, setIsLastStep] = useState(false)
@@ -21,14 +21,22 @@ export default () => {
       content: <Step2/>,
     },
     {
-      content: <Step3/>,
+      content: <Step3 next={goNext} prev={goPrev}/>,
     },
     {
-      content: <Step4/>,
+      content: <Step4 goToHo={goToHo}/>,
     },
   ]
 
-  return (
+const goNext = () => {
+  wizard.current.next()
+}
+
+const goPrev = () => {
+  wizard.current.prev()
+}
+
+return (
     <View>
       <SafeAreaView style={{ backgroundColor: "#FFF" }}>
         <View
@@ -40,9 +48,10 @@ export default () => {
             borderBottomWidth: 1,
             marginTop: 30
           }}>
-          <Button disabled={isFirstStep} title="Anterior" onPress={() => wizard.current.prev()} />
+          <Button disabled={isFirstStep} title="Anterior" onPress={() => goPrev()} />
           <Text >Reserva paso {currentStep + 1}</Text>
-          <Button disabled={isLastStep} title="Siguiente" onPress={() => wizard.current.next()} />
+          <Button disabled={isLastStep} title="Siguiente" onPress={() => goNext()} />
+          {/* <Button disabled={isLastStep} title="Siguiente" onPress={() => wizard.current.next()} /> */}
         </View>
       </SafeAreaView>
       <View style={{ flex: 2, flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
