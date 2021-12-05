@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const server = 'http://192.168.0.8:3000/api';
+const server = 'http://192.168.0.127:3000/api';
 
 const getAllReserves = async () => {
     const url = `${server}/reserves/`;
